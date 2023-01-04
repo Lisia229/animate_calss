@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.css' />
+  <title>Document</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      background: #222f41;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url('./img/macross_delta_wallpaper.jpg') no-repeat center/cover;
+    }
+
+    /* 遮罩設定 */
+    .mask-img {
+      width: 1000px;
+      height: 400px;
+      background: url('./img/macross_delta_original.png') no-repeat center center;
+      -webkit-mask: url('./img/macross_delta_original.png') no-repeat center center;
+      mask: url('./img/macross_delta.png') no-repeat center center;
+    }
+
+    .img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+
+      /* 
+        白色的邊框
+        filter可以讓png周圍有效果
+      */
+      filter:
+        drop-shadow(0 0 1px rgba(255, 255, 255, 1)) drop-shadow(0 0 1px rgba(255, 255, 255, 1)) drop-shadow(0 0 2px rgba(255, 255, 255, 1)) drop-shadow(0 0 2px rgba(255, 255, 255, 1));
+      animation: cold 6s infinite;
+    }
+
+    @keyframes cold {
+      50% {
+        filter:
+          drop-shadow(0 0 3px rgb(211, 251, 14)) drop-shadow(0 0 5px rgb(48, 196, 255)) drop-shadow(0 0 7px rgb(62, 55, 255)) drop-shadow(0 0 10px rgb(71, 120, 255));
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 主要作讓我們的粒子動畫只出現在img裡面 -->
+  <div class="mask-img">
+    <div id="particles-js"></div>
+  </div>
+  <img src="./img/macross_delta_original.png" class="img">
+  <!-- 主程式 -->
+  <script src="./js/particles.min.js"></script>
+  <!-- 
+    解壓縮後 particle.js-naster 裡面的 demo/js/app.js 來修改
+    將下載
+  -->
+  <script src="./js/02.macross.js"></script>
+</body>
+
+</html>
